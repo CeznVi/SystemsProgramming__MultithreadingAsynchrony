@@ -1,5 +1,3 @@
-using System.Threading;
-
 namespace MultithreadingAsynchrony
 {
     public partial class MainWindow : Form
@@ -17,6 +15,7 @@ namespace MultithreadingAsynchrony
 
         private void GenerateSimplyInt()
         {
+
             for (int i = 2; i < 50; i++)
             {
                 if (i > 1)
@@ -30,18 +29,24 @@ namespace MultithreadingAsynchrony
 
                     if (count == 2)
                     {
-                        listBox_ViewResult.Items.Add(i.ToString());
-                        listBox_ViewResult.SelectedIndex = listBox_ViewResult.Items.Count-1;
+                        listBox_ViewResult.Invoke(() => listBox_ViewResult.Items.Add(i));
+
+
+                        //listBox_ViewResult.Items.Add(i.ToString());
+
+
+
+                        //listBox_ViewResult.SelectedIndex = listBox_ViewResult.Items.Count - 1;
                     }
                 }
                 Thread.Sleep(100);
             }
 
+
             listBox_ViewResult.Items.Add($"œŒ“Œ  «¿ ŒÕ◊≈Õ ");
         }
 
         private List<Thread> _listTread = new List<Thread>();
-
 
         public MainWindow()
         {
@@ -50,11 +55,6 @@ namespace MultithreadingAsynchrony
 
         private void button_GenereteSimlyInt_Click(object sender, EventArgs e)
         {
-            if(_listTread.Count == 0)
-            {
-                listBox_ViewResult.Items.Clear();
-            }
-
 
             Thread thread = new Thread(GenerateSimplyInt);
             _listTread.Add(thread);
@@ -67,6 +67,14 @@ namespace MultithreadingAsynchrony
         private void textBox_MinValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void button_RestartTreads_Click(object sender, EventArgs e)
+        {
+            foreach (Thread item in _listTread)
+            {
+                listBox_ViewResult.Text = ($"œŒ“Œ : ( {item.Name} ), ÓÌ ÊË‚> {item.IsAlive}");
+            }
         }
     }
 

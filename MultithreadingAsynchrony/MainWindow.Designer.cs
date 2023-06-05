@@ -35,6 +35,7 @@
             label2 = new Label();
             textBox_MaxValue = new TextBox();
             listBox_ViewResult = new ListBox();
+            button_RestartTreads = new Button();
             SuspendLayout();
             // 
             // button_GenereteSimlyInt
@@ -95,11 +96,22 @@
             listBox_ViewResult.Size = new Size(800, 193);
             listBox_ViewResult.TabIndex = 5;
             // 
+            // button_RestartTreads
+            // 
+            button_RestartTreads.Location = new Point(517, 169);
+            button_RestartTreads.Name = "button_RestartTreads";
+            button_RestartTreads.Size = new Size(261, 23);
+            button_RestartTreads.TabIndex = 6;
+            button_RestartTreads.Text = "Перазапустить потоки";
+            button_RestartTreads.UseVisualStyleBackColor = true;
+            button_RestartTreads.Click += button_RestartTreads_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button_RestartTreads);
             Controls.Add(listBox_ViewResult);
             Controls.Add(textBox_MaxValue);
             Controls.Add(label2);
@@ -121,5 +133,6 @@
         private Label label2;
         private TextBox textBox_MaxValue;
         private ListBox listBox_ViewResult;
+        private Button button_RestartTreads;
     }
 }
