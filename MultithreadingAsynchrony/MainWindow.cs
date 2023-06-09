@@ -26,8 +26,13 @@ namespace MultithreadingAsynchrony
             for (int i = data.MinVal; i < data.MaxVal; i++)
             {
 
+
                 if (data.IsEnded == true)
                     break;
+
+                if (data.IsPaused == true)
+                    Thread.Sleep(-1);
+
 
                 if (i > 1)
                 {
@@ -213,6 +218,26 @@ namespace MultithreadingAsynchrony
 
             }
             _list.Clear();
+        }
+
+        private void button_PauseThreadsSimpleInt_Click(object sender, EventArgs e)
+        {
+            foreach (InputedData inputedData in _list)
+            {
+                inputedData.IsPaused = true;
+
+            }
+        }
+
+        private void button_ResumeThreadsSimplInt_Click(object sender, EventArgs e)
+        {
+            Thread.CurrentThread.Start();
+            foreach (InputedData inputedData in _list)
+            {
+                inputedData.IsPaused = false;
+            }
+
+            
         }
     }
 

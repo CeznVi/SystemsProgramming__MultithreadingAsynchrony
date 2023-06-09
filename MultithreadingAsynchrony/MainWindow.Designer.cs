@@ -212,6 +212,7 @@
             button_PauseThreadsSimpleInt.TabIndex = 16;
             button_PauseThreadsSimpleInt.Text = "Приостановить потоки";
             button_PauseThreadsSimpleInt.UseVisualStyleBackColor = true;
+            button_PauseThreadsSimpleInt.Click += button_PauseThreadsSimpleInt_Click;
             // 
             // button_ResumeThreadsSimplInt
             // 
@@ -221,6 +222,7 @@
             button_ResumeThreadsSimplInt.TabIndex = 17;
             button_ResumeThreadsSimplInt.Text = "Востановить потоки";
             button_ResumeThreadsSimplInt.UseVisualStyleBackColor = true;
+            button_ResumeThreadsSimplInt.Click += button_ResumeThreadsSimplInt_Click;
             // 
             // button_RestartSimplyInt
             // 
