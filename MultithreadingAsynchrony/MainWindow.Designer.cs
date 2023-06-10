@@ -48,6 +48,9 @@
             button_PauseThreadsSimpleInt = new Button();
             button_ResumeThreadsSimplInt = new Button();
             button_RestartSimplyInt = new Button();
+            button_PauseFibThread = new Button();
+            button_resumeFibThreads = new Button();
+            button_RestartThreads = new Button();
             SuspendLayout();
             // 
             // button_GenereteSimlyInt
@@ -234,11 +237,44 @@
             button_RestartSimplyInt.UseVisualStyleBackColor = true;
             button_RestartSimplyInt.Click += button_RestartSimplyInt_Click;
             // 
+            // button_PauseFibThread
+            // 
+            button_PauseFibThread.Location = new Point(314, 135);
+            button_PauseFibThread.Name = "button_PauseFibThread";
+            button_PauseFibThread.Size = new Size(265, 22);
+            button_PauseFibThread.TabIndex = 19;
+            button_PauseFibThread.Text = "Приостановить потоки";
+            button_PauseFibThread.UseVisualStyleBackColor = true;
+            button_PauseFibThread.Click += button_PauseFibThread_Click;
+            // 
+            // button_resumeFibThreads
+            // 
+            button_resumeFibThreads.Location = new Point(314, 163);
+            button_resumeFibThreads.Name = "button_resumeFibThreads";
+            button_resumeFibThreads.Size = new Size(265, 22);
+            button_resumeFibThreads.TabIndex = 20;
+            button_resumeFibThreads.Text = "Востановить потоки";
+            button_resumeFibThreads.UseVisualStyleBackColor = true;
+            button_resumeFibThreads.Click += button_resumeFibThreads_Click;
+            // 
+            // button_RestartThreads
+            // 
+            button_RestartThreads.Location = new Point(314, 191);
+            button_RestartThreads.Name = "button_RestartThreads";
+            button_RestartThreads.Size = new Size(265, 22);
+            button_RestartThreads.TabIndex = 21;
+            button_RestartThreads.Text = "Рестарт";
+            button_RestartThreads.UseVisualStyleBackColor = true;
+            button_RestartThreads.Click += button_RestartThreads_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(580, 520);
+            Controls.Add(button_RestartThreads);
+            Controls.Add(button_resumeFibThreads);
+            Controls.Add(button_PauseFibThread);
             Controls.Add(button_RestartSimplyInt);
             Controls.Add(button_ResumeThreadsSimplInt);
             Controls.Add(button_PauseThreadsSimpleInt);
@@ -286,5 +322,8 @@
         private Button button_PauseThreadsSimpleInt;
         private Button button_ResumeThreadsSimplInt;
         private Button button_RestartSimplyInt;
+        private Button button_PauseFibThread;
+        private Button button_resumeFibThreads;
+        private Button button_RestartThreads;
     }
 }

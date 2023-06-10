@@ -26,12 +26,17 @@ namespace MultithreadingAsynchrony
             for (int i = data.MinVal; i < data.MaxVal; i++)
             {
 
-
                 if (data.IsEnded == true)
                     break;
 
                 if (data.IsPaused == true)
-                    Thread.Sleep(-1);
+                    while (true)
+                    {
+                        if (data.IsPaused == false)
+                            break;
+                        if (data.IsEnded == true)
+                            break;
+                    }
 
 
                 if (i > 1)
@@ -74,6 +79,16 @@ namespace MultithreadingAsynchrony
             for (int i = 0; i < 40; ++i)
             {
                 if (data.IsEnded == true) { break; }
+
+                if (data.IsPaused == true)
+                    while (true)
+                    {
+                        if (data.IsPaused == false)
+                            break;
+                        if (data.IsEnded == true)
+                            break;
+                    }
+
                 array[i] = i < 2 ? 1 : array[i - 2] + array[i - 1];
 
                 listBox_ViewFibonachi.Items.Add(array[i]);
@@ -184,9 +199,6 @@ namespace MultithreadingAsynchrony
 
             HowManyFibIntThreads();
         }
-
-
-
         private void textBox_MinValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
@@ -225,19 +237,41 @@ namespace MultithreadingAsynchrony
             foreach (InputedData inputedData in _list)
             {
                 inputedData.IsPaused = true;
-
             }
         }
 
         private void button_ResumeThreadsSimplInt_Click(object sender, EventArgs e)
         {
-            Thread.CurrentThread.Start();
             foreach (InputedData inputedData in _list)
             {
                 inputedData.IsPaused = false;
             }
+        }
 
-            
+        private void button_PauseFibThread_Click(object sender, EventArgs e)
+        {
+            foreach (InputedData inputedData in _listFibonaci)
+            {
+                inputedData.IsPaused = true;
+            }
+        }
+
+        private void button_resumeFibThreads_Click(object sender, EventArgs e)
+        {
+            foreach (InputedData inputedData in _listFibonaci)
+            {
+                inputedData.IsPaused = false;
+            }
+        }
+
+        private void button_RestartThreads_Click(object sender, EventArgs e)
+        {
+            foreach (InputedData inputedData in _listFibonaci)
+            {
+                inputedData.IsEnded = true;
+
+            }
+            _listFibonaci.Clear();
         }
     }
 
